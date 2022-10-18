@@ -1,0 +1,25 @@
+.logo{
+    vertical-align: middle;
+}
+
+main{
+    height: calc(100vh - 160px);
+    overflow-y: auto;
+}
+.grid{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    width: 500px;
+    height: 500px;
+    background-color: rgb(129, 126, 126);
+}
+.square{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid black;
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+}
