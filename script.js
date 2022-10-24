@@ -14,37 +14,30 @@ BONUS:
 
 
 //richiamo il bottone dall'HTML
-
-
 const playButton = document.getElementById('playButton');
 let numeroCell = 100;
+
+//creo la funzione 
 function play (){
     console.log('inizio gioco...')
-    
-    
-    Celle(numeroCell);
-    campoMinato();
+    campoMinato(); 
 }
-// L'utente clicca su un bottone 
-playButton.addEventListener('click', play);
-
-function Celle(numeroCell){
+//creo le celle 
+function creaCelle(numero){
     const cell = document.createElement('div');
     cell.className = 'square';
     cell.innerHTML = `
-    <span>${numeroCell}<span>
+    <span>${numero}<span>
     `;
     return cell;
 }
-// al click del bottone si genererà la griglia di gioco. 
+// creo la griglia di gioco. 
 function campoMinato(){
-   
     const campoGioco = document.getElementById('campoDiGioco'); 
     const grid = document.createElement('div');
     grid.className = 'grid' //griglia
     for (let i= 1; i<= numeroCell; i++){
-        cella =  i;
-        grid.appendChild(cella);
+        grid.appendChild(creaCelle(i));  //campominato chiama crea celle 100 volte. 
     }
     campoGioco.appendChild(grid);
     
@@ -52,4 +45,7 @@ function campoMinato(){
 //chiamo la funzione iniziale
 play();
 
-// Ogni cella ha un numero progressivo, da 1 a 100.
+
+// L'utente clicca su un bottone 
+playButton.addEventListener('click', play());
+
