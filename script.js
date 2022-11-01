@@ -23,54 +23,29 @@ const playButton = document.getElementById('playButton');
 let numeroCell;
 const NUMBOMBE = 16;
 const bombePosition = [];
-//creo la funzione 
-function play (){
-    console.log('inizio gioco...')
-    campoMinato(); 
-}
-//creo le celle 
-function creaCelle(numero){
-    const cell = document.createElement('div');
-    cell.className = 'square';
-    cell.innerHTML = `
-    <span>${numero}<span>
-    `;
-    return cell;
-}
-// creo la griglia di gioco. 
-function campoMinato(){
-    const campoGioco = document.getElementById('campoDiGioco'); 
-    const grid = document.createElement('div');
-    grid.className = 'grid' //griglia
-    for (let i= 1; i<= numeroCell; i++){
-        grid.appendChild(creaCelle(i));  //campominato chiama crea celle 100 volte. 
-    }
-    campoGioco.appendChild(grid);
-    
-}
-
-
 // L'utente clicca su un bottone 
 playButton.addEventListener('click', play());
+//creo la funzione per il btnplay che mi permette di avere le griglie diverse in base al livello scelto
 
-const livelloPulito = document.getElementById('difficolta');
-livelloPulito.innerHTML = ''; //per tenere pulito quando cambi livello e quindi griglia
-
-const livelloHTML = document.getElementById('difficolta');
-const livello = livelloHTML.value ;
-
-switch(livello){
-    case '1':
-    default: 
-       numeroCell = 100
-    break;
-    case '2':
-       numeroCell = 81 
-    break;
-    case '3': 
-        numeroCell = 49
-    break;       
+function play (){
+    console.log('inizio gioco...')
+    const livelloHTML = document.getElementById('difficolta');
+    const livello = livelloHTML.value ;
+    
+    switch(livello){
+        case '1':
+        default: 
+           numeroCell = 100
+        break;
+        case '2':
+           numeroCell = 81 
+        break;
+        case '3': 
+            numeroCell = 49
+        break;       
+    }
 }
+
 //prendo tutta la griglia e ci metto dentro le 16 bombe randomiche
 while(bombePosition.lenght < NUMBOMBE){
     const bombe = randomNumber(1, numeroCell);
@@ -84,9 +59,9 @@ punteggio = numeroCell - NUMBOMBE;
 
 function clickCella (){
     const span = querySelector('span');
-    const num = parseInt(span.textContent);
+    const numeroCell = parseInt(span.textContent);
     removeEventListener('click', clickCella);
-    if (bombePosition.includes(num)){
+    if (bombePosition.includes(numeroCell)){
             span.classList.add('color-bombe');
             fineGioco();
     } else {
@@ -99,3 +74,29 @@ function clickCella (){
     }
 }
 
+//creo le celle 
+function creaCelle(numeroCell){
+    const cell = document.createElement('div');
+    cell.className = 'square';
+    cell.style.width = `calc(100% /${numeroCell})`;
+    cell.innerHTML = `
+        <span>${numeroCell}</span>
+    `;
+    cell.addEventListener('click', creaCelle);
+    return cell;
+}
+// creo la griglia di gioco. 
+function campoMinato(){
+    const campoGioco = document.getElementById('campoDiGioco'); 
+    const grid = document.createElement('div');
+    grid.className = 'grid' //griglia
+    for (let i= 1; i<= numeroCell; i++){
+        grid.appendChild(creaCelle(i));  //campominato chiama crea celle  
+    }
+    campoGioco.appendChild(grid);
+    
+}
+campoMinato();
+
+const livelloPulito = document.getElementById('difficolta');
+    livelloPulito.innerHTML = ''; //per tenere pulito quando cambi livello e quindi griglia
