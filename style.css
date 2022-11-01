@@ -1,7 +1,6 @@
 .logo{
     vertical-align: middle;
 }
-
 main{
     height: calc(100vh - 160px);
     overflow-y: auto;
@@ -25,4 +24,10 @@ main{
 }
 header{
     margin-bottom: 30px;
+}
+.color-bombe{
+    color: red;
+}
+.color-celle {
+    color: rgb(17, 206, 206);
 }

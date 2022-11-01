@@ -18,13 +18,13 @@
                     <a class="navbar-brand logo"><strong>Campo Minato</strong></a>
                 </div> 
                 <div class="dropdown d-flex justify-content-end"> <!-- non mi prende il flex per metterlo vicino a btnplay -->
-                    <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button id="difficolta" class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Livello
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button" id="easy">Easy</button>
-                        <button class="dropdown-item" type="button" id="hard">Hard</button>
-                        <button class="dropdown-item" type="button" id="crazy">Crazy</button>
+                        <button class="dropdown-item" type="button" value="1">Easy</button>
+                        <button class="dropdown-item" type="button" value="2">Hard</button>
+                        <button class="dropdown-item" type="button" value="3">Crazy</button>
                     </div>
                 </div>
                 <form class="d-flex" role="search">
@@ -36,6 +36,7 @@
     </header>  
 <!-- centro -->
     <main>
+        <h1 class="text-center pt-3 ">Seleziona la difficoltà e inizia a giocare!</h1>
         <div id="campoDiGioco" class="d-flex justify-content-center align-items-center">
         </div>
     </main>
