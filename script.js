@@ -41,8 +41,6 @@ function campoMinato(){
     campoGioco.appendChild(grid);
     
 }
-//chiamo la funzione iniziale
-play();
 
 
 // L'utente clicca su un bottone 

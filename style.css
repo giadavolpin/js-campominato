@@ -23,3 +23,6 @@ main{
     width: calc(100% / 10);
     height: calc(100% / 10);
 }
+header{
+    margin-bottom: 30px;
+}

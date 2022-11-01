@@ -17,7 +17,16 @@
                     <img src="./Logo.png" class=" logo d-inline-block align-text-top" width="30" height="30" alt="logo">
                     <a class="navbar-brand logo"><strong>Campo Minato</strong></a>
                 </div> 
-                
+                <div class="dropdown d-flex justify-content-end"> <!-- non mi prende il flex per metterlo vicino a btnplay -->
+                    <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Livello
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <button class="dropdown-item" type="button" id="easy">Easy</button>
+                        <button class="dropdown-item" type="button" id="hard">Hard</button>
+                        <button class="dropdown-item" type="button" id="crazy">Crazy</button>
+                    </div>
+                </div>
                 <form class="d-flex" role="search">
                     <button id="playButton" class="btn btn-outline-success" type="submit">Play</button>    
                 </form>
@@ -34,7 +43,7 @@
    
    
 <!-- Footer fatto -->
-    <footer class="footer">Creato con il &#10084; by Boolean </footer>  
+    <footer class="footer">Creato con il &#10084; by Giada </footer>  
     <script src="./script.js"></script>
 </body>
 </html>
