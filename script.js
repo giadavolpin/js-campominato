@@ -1,4 +1,5 @@
-/* L'utente indica un livello di difficoltà in base al quale viene generata una griglia di gioco quadrata, in cui ogni cella contiene un numero tra quelli compresi in un range:
+/* L'utente indica un livello di difficoltà in base al quale viene generata una griglia di gioco quadrata, 
+in cui ogni cella contiene un numero tra quelli compresi in un range:
 con difficoltà 1 => tra 1 e 100
 con difficoltà 2 => tra 1 e 81
 con difficoltà 3 => tra 1 e 49
@@ -46,3 +47,12 @@ function campoMinato(){
 // L'utente clicca su un bottone 
 playButton.addEventListener('click', play());
 
+//collegare il btnEasy con la griglia da 100
+const btnEasy = document.getElementById('easy');
+// collegare il btnHard con la griglia da 81
+const btnHard = document.getElementById('hard');
+// collegare il btnCrazy con la griglia da 49
+const btnCrazy = document.getElementById('crazy');
+
+// 16 numeri randomici da fare per le bombe
+//controllare che i num non siano doppi 
