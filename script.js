@@ -35,13 +35,13 @@ function play (){
     switch(livello){
         case '1':
         default: 
-           numeroCell = 100
+           numeroCelleTotali = 100
         break;
         case '2':
-           numeroCell = 81 
+           numeroCelleTotali = 81 
         break;
         case '3': 
-            numeroCell = 49
+            numeroCelleTotali = 49
         break;       
     }
 }
@@ -76,12 +76,12 @@ function clickCella (){
 }
 
 //creo le celle 
-function creaCelle(numeroCell){
+function creaCelle(numeroCellaAttuale){
     const cell = document.createElement('div');
     cell.className = 'square';
-    cell.style.width = `calc(10% / ${numeroCell})`;
+    cell.style.width = `calc(100% / 10)`;
     cell.innerHTML = `
-        <span>${numeroCell}</span>
+        <span>${numeroCellaAttuale}</span>
     `;
     cell.addEventListener('click', creaCelle);
     return cell;
@@ -91,7 +91,7 @@ function campoMinato(){
     const campoGioco = document.getElementById('campoDiGioco'); 
     const grid = document.createElement('div');
     grid.className = 'grid' //griglia
-    for (let i= 1; i<= numeroCell; i++){
+    for (let i= 1; i<= numeroCelleTotali; i++){
         grid.appendChild(creaCelle(i));  //campominato chiama crea celle  
     }
     campoGioco.appendChild(grid);
