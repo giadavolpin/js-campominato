@@ -47,6 +47,7 @@ function play (){
 }
 
 //prendo tutta la griglia e ci metto dentro le 16 bombe randomiche
+
 while(bombePosition.lenght < NUMBOMBE){
     const bombe = randomNumber(1, numeroCell);
     if(!bombePosition.includes(bombe)){
@@ -78,7 +79,7 @@ function clickCella (){
 function creaCelle(numeroCell){
     const cell = document.createElement('div');
     cell.className = 'square';
-    cell.style.width = `calc(100% /${numeroCell})`;
+    cell.style.width = `calc(10% / ${numeroCell})`;
     cell.innerHTML = `
         <span>${numeroCell}</span>
     `;
