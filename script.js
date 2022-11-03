@@ -49,20 +49,20 @@ function play (){
 //prendo tutta la griglia e ci metto dentro le 16 bombe randomiche
 
 while(bombePosition.lenght < NUMBOMBE){
-    const bombe = randomNumber(1, numeroCell);
+    const bombe = randomNumber(1, numeroCelleTotali);
     if(!bombePosition.includes(bombe)){
         bombePosition.push(bombe);
     }
 }
 console.log(bombePosition);
 
-punteggio = numeroCell - NUMBOMBE;
+punteggio = numeroCelleTotali - NUMBOMBE;
 
 function clickCella (){
     const span = querySelector('span');
-    const numeroCell = parseInt(span.textContent);
+    const numeroCelleTotali = parseInt(span.textContent);
     removeEventListener('click', clickCella);
-    if (bombePosition.includes(numeroCell)){
+    if (bombePosition.includes(numeroCelleTotali)){
             span.classList.add('color-bombe');
             fineGioco();
     } else {
@@ -80,6 +80,7 @@ function creaCelle(numeroCellaAttuale){
     const cell = document.createElement('div');
     cell.className = 'square';
     cell.style.width = `calc(100% / 10)`;
+    Math.sqrt(numeroCelleTotali); //sistemare qui 
     cell.innerHTML = `
         <span>${numeroCellaAttuale}</span>
     `;
