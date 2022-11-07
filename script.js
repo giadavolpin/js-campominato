@@ -30,7 +30,7 @@ const campoGioco = document.getElementById('campoDiGioco');
 //creo la funzione per il btnplay che mi permette di avere le griglie diverse in base al livello scelto
 
 function play(){
-    campoGioco.innerHTML='';
+    campoGioco.innerHTML=''; //prima di tutto pulisco la griglia in modo che non mi compare 2 o più volte
     console.log('inizio gioco...')
     const livelloHTML = document.getElementById('livello');
     const livello = livelloHTML.value ;
@@ -54,12 +54,12 @@ function play(){
             bombePosition.push(bombe);
         }
     }
-    console.log(bombePosition);
-    campoMinato();
+    
+    campoMinato();  //richiamo la funzione campominato che mi crea la griglia
 
 }
 
-function clickCella (click, ){
+function clickCella (click,){
     const span = querySelector('span');
     const numeroCelleTotali = parseInt(span.textContent);
     removeEventListener('click', clickCella);
@@ -91,7 +91,6 @@ function creaCelle(numeroCellaAttuale){
 }
 // creo la griglia di gioco. 
 function campoMinato(){
-     
     const grid = document.createElement('div');
     grid.className = 'grid' //griglia
     for (let i= 1; i<= numeroCelleTotali; i++){
@@ -100,11 +99,6 @@ function campoMinato(){
     campoGioco.appendChild(grid);
     
 }
-
-// const livelloPulito = document.getElementById('difficolta');
-    // livelloPulito.innerHTML = ''; //per tenere pulito quando cambi livello e quindi griglia
-
-
 function finegioco(){
         punteggio = numeroCelleTotali - NUMBOMBE;
 
