@@ -53,29 +53,10 @@ function play(){
         if(!bombePosition.includes(bombe)){
             bombePosition.push(bombe);
         }
-    }
-    
+    }   
     campoMinato();  //richiamo la funzione campominato che mi crea la griglia
 
 }
-
-function clickCella (click,){
-    const span = querySelector('span');
-    const numeroCelleTotali = parseInt(span.textContent);
-    removeEventListener('click', clickCella);
-    if (bombePosition.includes(numeroCelleTotali)){
-            span.classList.add('color-bombe');
-            fineGioco();
-    } else {
-        span.classList.add('color-celle');
-        tentativiMax++
-        console.log(tentativiMax)
-        if(tentativiMax === punteggio){
-            fineGioco();
-        }
-    }
-}
-
 //creo le celle 
 function creaCelle(numeroCellaAttuale){
     const cell = document.createElement('div');
@@ -97,8 +78,27 @@ function campoMinato(){
         grid.appendChild(creaCelle(i));  //campominato chiama crea celle  
     }
     campoGioco.appendChild(grid);
-    
 }
+
+function clickCella ('click',){
+    const span = querySelector('span');
+    const numeroCelleTotali = parseInt(span.textContent);
+
+    removeEventListener('click', clickCella);
+    if (bombePosition.includes(numeroCelleTotali)){
+            span.classList.add('color-bombe');
+            fineGioco();
+    } else {
+        span.classList.add('color-celle');
+        tentativiMax++
+        console.log(tentativiMax)
+    
+        if(tentativiMax === punteggio){
+            fineGioco();
+        }
+    }
+}
+
 function finegioco(){
         punteggio = numeroCelleTotali - NUMBOMBE;
 
