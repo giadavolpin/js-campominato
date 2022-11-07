@@ -80,21 +80,20 @@ function campoMinato(){
     campoGioco.appendChild(grid);
 }
 
-function clickCella ('click',){
+function clickCella(){
     const span = querySelector('span');
     const numeroCelleTotali = parseInt(span.textContent);
-
-    removeEventListener('click', clickCella);
+    this.removeEventListener('click', clickCella);
     if (bombePosition.includes(numeroCelleTotali)){
-            span.classList.add('color-bombe');
+            this.span.classList.add('color-bombe');
             fineGioco();
     } else {
-        span.classList.add('color-celle');
+        this.span.classList.add('color-celle');
         tentativiMax++
         console.log(tentativiMax)
     
         if(tentativiMax === punteggio){
-            fineGioco();
+            finegioco();
         }
     }
 }
