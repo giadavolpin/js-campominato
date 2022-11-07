@@ -20,16 +20,19 @@ BONUS:
 
 //richiamo il bottone dall'HTML
 const playButton = document.getElementById('playButton');
-let numeroCell;
+let numeroCelleTotali;
 const NUMBOMBE = 16;
 const bombePosition = [];
 // L'utente clicca su un bottone 
-playButton.addEventListener('click', play());
+playButton.addEventListener('click', play);
+//richiamo il contenitore del gioco
+const campoGioco = document.getElementById('campoDiGioco');
 //creo la funzione per il btnplay che mi permette di avere le griglie diverse in base al livello scelto
 
-function play (){
+function play(){
+    campoGioco.innerHTML='';
     console.log('inizio gioco...')
-    const livelloHTML = document.getElementById('difficolta');
+    const livelloHTML = document.getElementById('livello');
     const livello = livelloHTML.value ;
     
     switch(livello){
@@ -44,21 +47,19 @@ function play (){
             numeroCelleTotali = 49
         break;       
     }
-}
-
-//prendo tutta la griglia e ci metto dentro le 16 bombe randomiche
-
-while(bombePosition.lenght < NUMBOMBE){
-    const bombe = randomNumber(1, numeroCelleTotali);
-    if(!bombePosition.includes(bombe)){
-        bombePosition.push(bombe);
+    //prendo tutta la griglia e ci metto dentro le 16 bombe randomiche
+    while(bombePosition.lenght < NUMBOMBE){
+        const bombe = randomNumber(1, numeroCelleTotali);
+        if(!bombePosition.includes(bombe)){
+            bombePosition.push(bombe);
+        }
     }
+    console.log(bombePosition);
+    campoMinato();
+
 }
-console.log(bombePosition);
 
-punteggio = numeroCelleTotali - NUMBOMBE;
-
-function clickCella (){
+function clickCella (click, ){
     const span = querySelector('span');
     const numeroCelleTotali = parseInt(span.textContent);
     removeEventListener('click', clickCella);
@@ -79,8 +80,9 @@ function clickCella (){
 function creaCelle(numeroCellaAttuale){
     const cell = document.createElement('div');
     cell.className = 'square';
-    cell.style.width = `calc(100% / 10)`;
-    Math.sqrt(numeroCelleTotali); //sistemare qui 
+    const righe = Math.sqrt(numeroCelleTotali); 
+    cell.style.width = `calc(100% / ${righe})`;
+    cell.style.height = `calc(100% / ${righe})`;
     cell.innerHTML = `
         <span>${numeroCellaAttuale}</span>
     `;
@@ -89,7 +91,7 @@ function creaCelle(numeroCellaAttuale){
 }
 // creo la griglia di gioco. 
 function campoMinato(){
-    const campoGioco = document.getElementById('campoDiGioco'); 
+     
     const grid = document.createElement('div');
     grid.className = 'grid' //griglia
     for (let i= 1; i<= numeroCelleTotali; i++){
@@ -98,7 +100,14 @@ function campoMinato(){
     campoGioco.appendChild(grid);
     
 }
-campoMinato();
 
-const livelloPulito = document.getElementById('difficolta');
-    livelloPulito.innerHTML = ''; //per tenere pulito quando cambi livello e quindi griglia
+// const livelloPulito = document.getElementById('difficolta');
+    // livelloPulito.innerHTML = ''; //per tenere pulito quando cambi livello e quindi griglia
+
+
+function finegioco(){
+        punteggio = numeroCelleTotali - NUMBOMBE;
+
+    }
+
+//quando deve partire questa funzione o questo ciclo?
